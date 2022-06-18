@@ -137,11 +137,13 @@ class MPScrapy:
         with open(self.album_art, 'rb') as the_album_art:
             the_art = the_album_art.read()
 
+        # Reference
+        # https://stackoverflow.com/questions/51032792/cannot-embed-cover-art-to-mp3-in-python-3-5-2
         audio.tags.add(
             APIC(
-                encoding=3, # 3 is for utf-8
-                mime='image/png', # image/jpeg or image/png
-                type=3, # 3 is for the cover image
+                encoding=3, 
+                mime='image/png', 
+                type=3, 
                 desc=u'Cover',
                 data=the_art
             )
