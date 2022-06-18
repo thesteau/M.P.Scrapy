@@ -25,6 +25,15 @@ class MPScrapy:
 
     def get_url(self):
         return self.url
+
+    def get_download_item(self):
+        return self.download_item 
+
+    def get_target_selection(self):
+        return self.target_selection
+
+    def get_folder_location(self):
+        return self.folder_location 
     
     def get_base_url(self):
         return self.base_url
@@ -40,6 +49,15 @@ class MPScrapy:
 
     def set_url(self, url):
         self.url = url
+
+    def set_download_item(self, download_item):
+        self.download_item = download_item
+
+    def set_target_select(self, target_selection):
+        self.target_selection = target_selection
+
+    def set_folder_loc(self, folder_location):
+        self.folder_location = folder_location
         
     def set_album(self, img_path):
         self.album_art = img_path
@@ -119,13 +137,11 @@ class MPScrapy:
         with open(self.album_art, 'rb') as the_album_art:
             the_art = the_album_art.read()
 
-        # Reference
-        # https://stackoverflow.com/questions/51032792/cannot-embed-cover-art-to-mp3-in-python-3-5-2
         audio.tags.add(
             APIC(
-                encoding=3, 
-                mime='image/png', 
-                type=3, 
+                encoding=3, # 3 is for utf-8
+                mime='image/png', # image/jpeg or image/png
+                type=3, # 3 is for the cover image
                 desc=u'Cover',
                 data=the_art
             )
